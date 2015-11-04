@@ -10,6 +10,6 @@ func TestCommand_NoOption(t *testing.T) {
 		t.Fatalf("Error occured: %s", err)
 	}
 	if rc != 0 {
-		t.Errorf("RC => %s, wants %s", rc)
+		t.Errorf("RC => %d, wants %d", rc, 0)
 	}
 }

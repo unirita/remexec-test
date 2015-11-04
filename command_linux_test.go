@@ -54,16 +54,19 @@ func TestRemote_Script(t *testing.T) {
 	if rc != 12 {
 		t.Errorf("RC => %d, wants %d", rc, 12)
 	}
-
-	expected := `script=/home/passuser/test.sh
-param1=test1
-param2=test2
-`
-	if output != expected {
-		t.Errorf("Output is not expected value.")
-		t.Log("Expected:")
-		t.Log(expected)
-		t.Log("Actual:")
+	if !strings.Contains(output, "script=/home/passuser/test.sh") {
+		t.Errorf("Output does not contains correct script value.")
+		t.Log("Output:")
+		t.Log(output)
+	}
+	if !strings.Contains(output, "param1=test1") {
+		t.Errorf("Output does not contains correct first parameter value.")
+		t.Log("Output:")
+		t.Log(output)
+	}
+	if !strings.Contains(output, "param1=test2") {
+		t.Errorf("Output does not contains correct second parameter value.")
+		t.Log("Output:")
 		t.Log(output)
 	}
 }

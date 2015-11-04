@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"os/exec"
 	"path/filepath"
 	"syscall"
@@ -14,6 +15,8 @@ var (
 
 func executeRemoteCommand(command string) (int, error) {
 	cmd := exec.Command(remexec, "-c", commandIni, "-e", command)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
 	return getRC(cmd.Run())
 }
 

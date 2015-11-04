@@ -12,6 +12,9 @@ import (
 	"github.com/unirita/remexec-test/container"
 )
 
+
+var baseDir := filepath.Join(os.Getenv("GOPATH"), "bin")
+
 func TestMain(m *testing.M) {
 	os.Exit(realTestMain(m))
 }
@@ -59,20 +62,19 @@ type ConfigParam struct {
 func prepareTestData(remoteHost string) error {
 	dataDir := filepath.Join(os.Getenv("GOPATH"), "src",
 		"github.com", "unirita", "remexec-test", "_testdata")
-	testBase := filepath.Join(os.Getenv("GOPATH"), "bin")
 
 	param := &ConfigParam{Host: remoteHost, GoPath: os.Getenv("GOPATH")}
-	if err := createConf("command.ini", dataDir, testBase, param); err != nil {
+	if err := createConf("command.ini", dataDir, baseDir, param); err != nil {
 		return err
 	}
-	if err := createConf("script.ini", dataDir, testBase, param); err != nil {
+	if err := createConf("script.ini", dataDir, baseDir, param); err != nil {
 		return err
 	}
-	if err := copyFile("remote.pem", dataDir, testBase); err != nil {
+	if err := copyFile("remote.pem", dataDir, baseDir); err != nil {
 		return err
 	}
 
-	os.Chmod(filepath.Join(testBase, "remote.pem"), 0400)
+	os.Chmod(filepath.Join(baseDir, "remote.pem"), 0400)
 
 	return nil
 }

@@ -37,7 +37,7 @@ func TestRemote_Command_WithParameter(t *testing.T) {
 	if rc != 0 {
 		t.Errorf("RC => %d, wants %d", rc, 0)
 	}
-	if !output != "testmessage" {
+	if output != "testmessage" {
 		t.Errorf("Output => %s, wants %s.", output, "testmessage")
 	}
 }

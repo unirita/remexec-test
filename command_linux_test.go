@@ -64,7 +64,7 @@ func TestRemote_Script(t *testing.T) {
 		t.Log("Output:")
 		t.Log(output)
 	}
-	if !strings.Contains(output, "param1=test2") {
+	if !strings.Contains(output, "param2=test2") {
 		t.Errorf("Output does not contains correct second parameter value.")
 		t.Log("Output:")
 		t.Log(output)

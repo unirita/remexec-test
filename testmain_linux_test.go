@@ -23,5 +23,12 @@ func realTestMain(m *testing.M) int {
 	}
 	defer img.Remove()
 
+	cnt := img.NewContainer("remote")
+	if err := cnt.StartAndPublish("12345:22"); err != nil {
+		fmt.Println("Could not start docker container.")
+		return 1
+	}
+	defer cnt.Terminate()
+
 	return m.Run()
 }

@@ -28,7 +28,7 @@ func TestRemote_Command_NoParameter(t *testing.T) {
 func TestRemote_Command_WithParameter(t *testing.T) {
 	c := capturer.NewStdoutCapturer()
 	c.Start()
-	rc, err := executeRemoteCommand(`echo "testmessage"`)
+	rc, err := executeRemoteCommand(`"echo \"testmessage\""`)
 	output := c.Stop()
 
 	if err != nil {

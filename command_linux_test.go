@@ -19,7 +19,7 @@ func TestCommand_NoOption(t *testing.T) {
 	if rc != 0 {
 		t.Errorf("RC => %d, wants %d", rc, 0)
 	}
-	if !strings.HasSuffix(output, "/") {
+	if !strings.HasPrefix(output, "/") {
 		t.Errorf("Output is not expected format.")
 		t.Errorf("Output: %s", output)
 	}

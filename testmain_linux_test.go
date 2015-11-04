@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"testing"
 	"text/template"
+	"time"
 
 	"github.com/unirita/remexec-test/container"
 )
@@ -30,7 +31,7 @@ func realTestMain(m *testing.M) int {
 	defer img.Remove()
 
 	cnt := img.NewContainer("remote")
-	if err := cnt.Start(); err != nil {
+	if err := cnt.StartAndPublish("12345:22"); err != nil {
 		fmt.Println("Error: Could not start docker container.")
 		fmt.Println(err)
 		return 1
@@ -49,6 +50,8 @@ func realTestMain(m *testing.M) int {
 		fmt.Println(err)
 		return 1
 	}
+
+	time.Sleep(5 * time.Second)
 
 	return m.Run()
 }

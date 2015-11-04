@@ -15,6 +15,8 @@ func TestMain(m *testing.M) {
 func realTestMain(m *testing.M) int {
 	imgPath := filepath.Join(os.Getenv("GOPATH"), "src", "github.com", "unirita",
 		"remexec-test", "_docker", "remote")
-	img := container.NewImage("remexec/test", imgPath)
+	img := container.CreateImage("remexec/test", imgPath)
 	defer img.Remove()
+
+	return m.Run()
 }

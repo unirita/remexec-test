@@ -6,6 +6,8 @@ RUN sed -ri 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 RUN mkdir -p /var/run/sshd && chmod 755 /var/run/sshd
 RUN useradd passuser
 RUN echo -e "testpass\ntestpass" | passwd passuser
+ADD scripts/test.sh /home/passuser/test.sh
+RUN chmod 755 /home/passuser/test.sh
 RUN useradd keyuser
 RUN echo -e "testpass2\ntestpass2" | passwd keyuser
 RUN mkdir -p /home/keyuser/.ssh

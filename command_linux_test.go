@@ -7,7 +7,7 @@ import (
 	"github.com/unirita/remexec-test/capturer"
 )
 
-func TestCommand_NoParameter(t *testing.T) {
+func TestRemote_Command_NoParameter(t *testing.T) {
 	c := capturer.NewStdoutCapturer()
 	c.Start()
 	rc, err := executeRemoteCommand("pwd")
@@ -25,7 +25,7 @@ func TestCommand_NoParameter(t *testing.T) {
 	}
 }
 
-func TestCommand_WithParameter(t *testing.T) {
+func TestRemote_Command_WithParameter(t *testing.T) {
 	c := capturer.NewStdoutCapturer()
 	c.Start()
 	rc, err := executeRemoteCommand(`echo "testmessage"`)
@@ -39,5 +39,31 @@ func TestCommand_WithParameter(t *testing.T) {
 	}
 	if !output != "testmessage" {
 		t.Errorf("Output => %s, wants %s.", output, "testmessage")
+	}
+}
+
+func TestRemote_Script(t *testing.T) {
+	c := capturer.NewStdoutCapturer()
+	c.Start()
+	rc, err := executeRemoteCommand(`/home/passuser/test.sh "test1" "test2"`)
+	output := c.Stop()
+
+	if err != nil {
+		t.Fatalf("Error occured: %s", err)
+	}
+	if rc != 12 {
+		t.Errorf("RC => %d, wants %d", rc, 12)
+	}
+
+	expected := `script=/home/passuser/test.sh
+param1=test1
+param2=test2
+`
+	if output != expected {
+		t.Errorf("Output is not expected value.")
+		t.Log("Expected:")
+		t.Log(expected)
+		t.Log("Actual:")
+		t.Log(output)
 	}
 }

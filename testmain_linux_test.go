@@ -72,6 +72,8 @@ func prepareTestData(remoteHost string) error {
 		return err
 	}
 
+	os.Chmod(filepath.Join(testBase, "remote.pem"), 0400)
+
 	return nil
 }
 

@@ -21,7 +21,7 @@ func executeRemoteCommand(command string) (int, error) {
 }
 
 func executeLocalScript(script string) (int, error) {
-	cmd := exec.Command(remexec, "-c", commandIni, "-f", script)
+	cmd := exec.Command(remexec, "-c", scriptIni, "-f", script)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	return getRC(cmd.Run())

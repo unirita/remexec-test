@@ -112,11 +112,11 @@ func TestIrregular_RemoteCommandNotExists(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Error occured: %s", err)
 	}
-	if rc != 255 {
-		t.Errorf("RC => %d, wants %d", rc, 255)
+	if rc != 127 {
+		t.Errorf("RC => %d, wants %d", rc, 127)
 	}
-	if !strings.Contains(output, "REX003E") {
-		t.Errorf("Output does not contains expected error message.")
+	if strings.Contains(output, "REX003E") {
+		t.Errorf("Output contains unexpected error message.")
 		t.Log("Output:")
 		t.Log(output)
 	}

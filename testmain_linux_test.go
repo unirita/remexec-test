@@ -70,6 +70,9 @@ func prepareTestData(remoteHost string) error {
 	if err := createConf("script.ini", dataDir, baseDir, param); err != nil {
 		return err
 	}
+	if err := copyFile("localtest.sh", dataDir, baseDir); err != nil {
+		return err
+	}
 	if err := copyFile("remote.pem", dataDir, baseDir); err != nil {
 		return err
 	}

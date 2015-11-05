@@ -10,6 +10,8 @@ ADD scripts/test.sh /home/passuser/test.sh
 RUN chmod 755 /home/passuser/test.sh
 RUN useradd keyuser
 RUN echo -e "testpass2\ntestpass2" | passwd keyuser
+RUN mkdir -p /home/keyuser/tmp
+RUN chmod 777 /home/keyuser/tmp
 RUN mkdir -p /home/keyuser/.ssh
 ADD keys/id_rsa.pub /home/keyuser/.ssh/authorized_keys
 RUN chown -R keyuser:keyuser /home/keyuser/.ssh

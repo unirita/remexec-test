@@ -20,6 +20,13 @@ func executeRemoteCommand(command string) (int, error) {
 	return getRC(cmd.Run())
 }
 
+func executeLocalScript(script string) (int, error) {
+	cmd := exec.Command(remexec, "-c", commandIni, "-f", script)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	return getRC(cmd.Run())
+}
+
 func getRC(err error) (int, error) {
 	if err != nil {
 		if e2, ok := err.(*exec.ExitError); ok {

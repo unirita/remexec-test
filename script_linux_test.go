@@ -3,6 +3,7 @@ package main
 import (
 	"path/filepath"
 	"regexp"
+	"strings"
 	"testing"
 
 	"github.com/unirita/remexec-test/capturer"

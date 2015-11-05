@@ -70,10 +70,25 @@ func prepareTestData(remoteHost string) error {
 	if err := createConf("script.ini", dataDir, baseDir, param); err != nil {
 		return err
 	}
+	if err := createConf("noexisthost.ini", dataDir, baseDir, param); err != nil {
+		return err
+	}
+	if err := createConf("noexistkey.ini", dataDir, baseDir, param); err != nil {
+		return err
+	}
+	if err := createConf("wrongkey.ini", dataDir, baseDir, param); err != nil {
+		return err
+	}
+	if err := createConf("wrongpass.ini", dataDir, baseDir, param); err != nil {
+		return err
+	}
 	if err := copyFile("localtest.sh", dataDir, baseDir); err != nil {
 		return err
 	}
 	if err := copyFile("remote.pem", dataDir, baseDir); err != nil {
+		return err
+	}
+	if err := copyFile("wrong.pem", dataDir, baseDir); err != nil {
 		return err
 	}
 

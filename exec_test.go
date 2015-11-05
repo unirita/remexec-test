@@ -27,6 +27,13 @@ func executeLocalScript(script string) (int, error) {
 	return getRC(cmd.Run())
 }
 
+func executeWithConfig(config string) (int, error) {
+	cmd := exec.Command(remexec, "-c", config, "-e", "pwd")
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	return getRC(cmd.Run())
+}
+
 func getRC(err error) (int, error) {
 	if err != nil {
 		if e2, ok := err.(*exec.ExitError); ok {

@@ -105,11 +105,8 @@ func TestIrregular_RemexecPs1NotExists(t *testing.T) {
 		t.Fatalf("Error occured: %s", err)
 	}
 
-	// NOTICE:
-	// Real rc is -196608, but value of rc variable is 4294770688.
-	// Because it's overflow with uint32.
-	if rc != 4294770688 {
-		t.Errorf("RC => %d, wants %d", rc, 4294770688)
+	if rc != 255 {
+		t.Errorf("RC => %d, wants %d", rc, 255)
 	}
 
 	if strings.Contains(output, "REX003E") {

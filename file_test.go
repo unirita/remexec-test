@@ -10,6 +10,8 @@ import (
 
 type ConfigParam struct {
 	Host   string
+	User   string
+	Pass   string
 	GoPath string
 }
 

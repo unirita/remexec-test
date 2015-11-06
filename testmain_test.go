@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 	"path/filepath"
+	"testing"
 )
 
 var baseDir = filepath.Join(os.Getenv("GOPATH"), "bin")

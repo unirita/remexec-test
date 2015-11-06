@@ -13,10 +13,6 @@ import (
 	"github.com/unirita/remexec-test/container"
 )
 
-func TestMain(m *testing.M) {
-	os.Exit(realTestMain(m))
-}
-
 func realTestMain(m *testing.M) int {
 	imgPath := filepath.Join(os.Getenv("GOPATH"), "src", "github.com", "unirita",
 		"remexec-test", "_docker", "remote")

@@ -28,7 +28,7 @@ func executeLocalScript(script string) (int, error) {
 }
 
 func executeWithConfig(config string) (int, error) {
-	cmd := exec.Command(remexec, "-c", config, "-e", "pwd")
+	cmd := exec.Command(remexec, "-c", config, "-e", "hostname")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	return getRC(cmd.Run())

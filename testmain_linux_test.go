@@ -61,7 +61,7 @@ type ConfigParam struct {
 
 func prepareTestData(remoteHost string) error {
 	dataDir := filepath.Join(os.Getenv("GOPATH"), "src",
-		"github.com", "unirita", "remexec-test", "_testdata")
+		"github.com", "unirita", "remexec-test", "_testdata", "linux")
 
 	param := &ConfigParam{Host: remoteHost, GoPath: os.Getenv("GOPATH")}
 	if err := createConf("command.ini", dataDir, baseDir, param); err != nil {

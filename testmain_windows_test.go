@@ -36,7 +36,7 @@ func prepareTestData() error {
 	if err := createConf("wrongpass.ini", dataDir, baseDir, param); err != nil {
 		return err
 	}
-	if err := copyFile("localtest.sh", dataDir, baseDir); err != nil {
+	if err := copyFile("localtest.ps1", dataDir, baseDir); err != nil {
 		return err
 	}
 

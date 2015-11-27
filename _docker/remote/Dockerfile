@@ -1,7 +1,7 @@
 FROM centos
 MAINTAINER hondata <takahiro_honda@unirita.co.jp>
 
-RUN yum install -y openssh-server
+RUN yum install -y passwd openssh-server
 RUN sed -ri 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 RUN mkdir -p /var/run/sshd && chmod 755 /var/run/sshd
 RUN useradd passuser

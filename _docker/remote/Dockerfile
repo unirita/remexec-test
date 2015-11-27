@@ -16,7 +16,7 @@ RUN mkdir -p /home/keyuser/.ssh
 ADD keys/id_rsa.pub /home/keyuser/.ssh/authorized_keys
 RUN chown -R keyuser:keyuser /home/keyuser/.ssh
 RUN chmod 400 /home/keyuser/.ssh/authorized_keys
-RUN /etc/init.d/sshd start
+RUN systemctl start sshd.service
 
 EXPOSE 22
 

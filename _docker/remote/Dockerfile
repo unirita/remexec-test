@@ -1,4 +1,4 @@
-FROM centos:centos6
+FROM centos
 MAINTAINER hondata <takahiro_honda@unirita.co.jp>
 
 RUN yum install -y openssh-server
